@@ -1,115 +1,78 @@
-# 🧰 Sistem Peminjaman dan Pengembalian Aset Laboratorium Mikrokontroler
-
-## 📘 Deskripsi Proyek
-Sistem ini dirancang untuk membantu proses **pencatatan aktivitas peminjaman dan pengembalian aset di laboratorium mikrokontroler**.  
-Sebelumnya, proses dilakukan secara manual menggunakan kertas sehingga sering terjadi kesalahan data dan kesulitan dalam pelacakan aset.  
-Program ini dibuat untuk mempermudah laboran dan mahasiswa dalam melakukan transaksi peminjaman dengan **validasi otomatis** dan **pembaruan stok real-time**.
+# 🧰 Sistem Peminjaman & Pengembalian Aset Laboratorium Mikrokontroler  
+### ⚡ Monitoring Real-Time & Validasi Stok Otomatis  
 
 ---
 
-## 🧩 Fitur Utama
-- **Manajemen Aset**
-  - Menampilkan daftar aset dan stok yang tersedia.
-  - Sorting aset berdasarkan **nama** atau **jumlah stok**.
-- **Peminjaman**
-  - Input data peminjam (NIM, Nama, ID Aset, Jumlah).
-  - Validasi input & stok sebelum transaksi.
-- **Pengembalian**
-  - Proses pengembalian aset berdasarkan ID peminjaman.
-  - Stok otomatis bertambah kembali.
-- **Pencarian Cepat**
-  - Cari data aset atau peminjaman dengan **Binary Search**.
-- **Monitoring**
-  - Mengecek status peminjaman dan sisa stok aset secara langsung.
+## 📘 Deskripsi  
+Pencatatan aset laboratorium yang masih manual sering menimbulkan kesalahan data dan kehilangan aset.  
+Sistem ini dibuat untuk membantu **laboran dan mahasiswa** dalam proses **peminjaman, pengembalian, dan pelacakan aset** secara **digital dan otomatis**.  
+
+Fitur utama:
+- Monitoring status aset **real-time**  
+- Validasi stok otomatis  
+- Pengembalian aset berdasarkan kondisi  
+- Sorting & pencarian cepat dengan algoritma efisien  
 
 ---
 
-## 🧠 Algoritma yang Digunakan
-| Jenis | Algoritma | Tujuan |
-|-------|------------|--------|
-| Sorting | **Insertion Sort** | Mengurutkan aset berdasarkan nama atau stok |
-| Searching | **Binary Search** | Mencari aset atau peminjaman berdasarkan ID |
-| Struktur Data | **Array 2D** | Menyimpan data aset dan transaksi |
-
-Kompleksitas:
-- Insertion Sort → O(n²)
-- Binary Search → O(log n)
+## ⚙️ Fitur Sistem  
+✅ **Manajemen Aset:** lihat, urutkan, dan cari aset berdasarkan ID, nama, atau stok.  
+✅ **Peminjaman:** stok otomatis berkurang setelah transaksi.  
+✅ **Pengembalian:** stok bertambah jika aset baik, tetap jika rusak/hilang.  
+✅ **Monitoring:** cek status peminjaman & stok terkini secara langsung.  
 
 ---
 
-## 📋 Struktur Menu
-[1] Lihat Aset <br>
-[2] Peminjaman <br>
-[3] Pengembalian <br>
-[4] Cek Peminjaman <br>
-[5] Cek Sisa Stok Aset <br>
-[6] Keluar
+## 🧠 Desain Algoritma  
+| Komponen | Metode | Keterangan |
+|-----------|---------|-------------|
+| Penyimpanan Data | Array 2D | Simulasi tabel data aset & peminjaman |
+| Pengurutan | Insertion Sort | Urutkan aset berdasarkan nama/stok |
+| Pencarian | Binary Search | Cari data aset/peminjaman dengan cepat |
+| Kontrol Program | Perulangan & Percabangan | Navigasi menu & validasi input |
 
 ---
 
-## 📥 Contoh Input dan Output
+## 🧩 Struktur Modular Utama
+**Prosedur:**  
+`pinjamAset()` • `kembaliAset()` • `sortAsetByNama()` • `sortAsetByStok()`  
 
-### ✅ Peminjaman Normal
-**Input:**
-NIM : 24051130000
-Nama : Orang
-ID Aset : 2
-Jumlah : 3
+**Fungsi:**  
+`cariAsetByID()` • `cariPeminjamanByID()` • `cekPeminjaman()` • `cekSisaStokAset()`  
 
-makefile
-Copy code
-**Output:**
-Peminjaman berhasil!
-Sisa stok aset: 7
+Ada lagi beberapa pelengkap
+---
 
-### ⚠️ Kasus Edge (stok tidak cukup)
-**Input:**
-ID Aset : 2
-Jumlah : 15
+## 💻 Contoh I/O  
+**Peminjaman Aset (`pinjamAset`)**  
+- Input: `A001, 1` → ✅ *Peminjaman berhasil. Stok berkurang.*  
+- Input: `A001, 16` → ❌ *Gagal: Melebihi stok.*  
 
-makefile
-Copy code
-**Output:**
-Gagal! Jumlah peminjaman melebihi stok tersedia.
+**Pengembalian Aset (`kembaliAset`)**  
+- Input: `PJM001, "baik"` → ✅ *Stok bertambah.*  
+- Input: `PJM002, "rusak"` → ⚠️ *Stok tidak bertambah.*  
+
+**Cek Stok (`cekSisaStokAset`)**  
+- Input: `A001` → *13 unit tersedia*  
+- Input: `Y100` → ❌ *ID tidak ditemukan*  
 
 ---
 
-
-## ⚙️ Sub-program Utama
-
-| Fungsi | Deskripsi |
-|--------|------------|
-| `tampilkanMenu()` | Menampilkan daftar menu utama |
-| `lihatAset()` | Menampilkan semua data aset |
-| `pinjamAset()` | Proses peminjaman dan pengurangan stok |
-| `kembaliAset()` | Proses pengembalian dan penambahan stok |
-| `sortAsetByNama(arr)` | Mengurutkan aset berdasarkan nama (A–Z) |
-| `sortAsetByStok(arr)` | Mengurutkan aset berdasarkan stok tersisa |
-| `cariAsetByID(idAset)` | Mencari data aset dengan Binary Search |
-| `cariPeminjamanByID(idPinjam)` | Mencari data peminjaman dengan Binary Search |
-| `validasiNIM(nim)` | Memastikan format dan panjang NIM benar |
-| `validasiJumlah(jumlah)` | Mengecek jumlah aset valid dan tidak negatif |
-| `validasiID(id, tipe)` | Memastikan ID aset/peminjaman valid |
-| `updateStok(idAset, perubahan)` | Menambah atau mengurangi stok sesuai transaksi |
-| `cekPeminjaman(idPinjam)` | Menampilkan detail peminjaman |
-| `cekSisaStokAset(idAset)` | Menampilkan stok tersisa dari aset tertentu |
-
----
-
-## 🧪 Rencana Pengujian
-
-| Jenis Uji | Deskripsi | Hasil yang Diharapkan |
-|------------|------------|-----------------------|
-| Normal | Peminjaman valid | Data tersimpan dan stok berkurang |
-| Edge | Jumlah > stok | Pesan error dan stok tidak berubah |
-| Edge | ID aset tidak valid | Pesan “Aset tidak ditemukan” |
-| Normal | Pengembalian valid | Stok bertambah sesuai jumlah dikembalikan |
+## 🧪 Rencana Pengujian  
+| Jenis | Deskripsi | Hasil yang Diharapkan |
+|--------|------------|-----------------------|
+| Normal | Urutkan aset (nama) | Aset terurut A–Z |
+| Normal | Urutkan aset (stok) | Aset terurut stok tertinggi |
+| Edge | Daftar aset kosong | Pesan “Data aset kosong” |
+| Normal | Cari aset valid | Data lengkap tampil |
+| Edge | Cari aset tidak valid | Pesan “Aset tidak ditemukan” |
+| Normal | Peminjaman valid | Data tersimpan & stok berkurang |
+| Edge | Jumlah > stok | Pesan gagal, stok tetap |
+| Normal | Pengembalian valid | Stok bertambah |
 | Edge | ID peminjaman salah | Pesan “Peminjaman tidak ditemukan” |
 
 ---
 
-## 🧾 Catatan Akhir
-Proyek ini dikembangkan untuk memenuhi tugas akhir mata kuliah **Praktikum Basis Data**, dengan fokus pada penerapan **algoritma dasar (sort/search)** dan **pemodelan sistem informasi berbasis array 2D**.  
-Sistem ini masih dapat dikembangkan lebih lanjut menggunakan **database SQLite atau MySQL** agar dapat digunakan secara nyata di lingkungan laboratorium.
-
----
+## 🧾 Catatan Akhir  
+Proyek ini dikembangkan untuk **Praktikum Basis Data** dengan penerapan **Array 2D, Sorting, dan Searching**.  
+Sistem ini dapat dikembangkan lebih lanjut menggunakan **SQLite/MySQL** agar siap digunakan di laboratorium nyata.
