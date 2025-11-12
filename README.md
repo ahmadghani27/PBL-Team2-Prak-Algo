@@ -64,8 +64,4 @@ Modul-modul utama dirancang dengan fokus pada **efisiensi pemrosesan data**, di 
 git clone https://github.com/ahmadghani27/PBL-Team2-Prak-Algo.git
 ```
 ### 2️⃣ Kompilasi dan Eksekusi
-(Instruksi dijalankan sesuai bahasa pemrograman yang digunakan, misalnya C/C++ atau Python.)
-
-# Contoh jika menggunakan C/C++
-gcc main.c -o sistem
-./sistem
+ ....
