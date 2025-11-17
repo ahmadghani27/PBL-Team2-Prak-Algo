@@ -64,4 +64,8 @@ Modul-modul utama dirancang dengan fokus pada **efisiensi pemrosesan data**, di 
 git clone https://github.com/ahmadghani27/PBL-Team2-Prak-Algo.git
 ```
 ### 2️⃣ Kompilasi dan Eksekusi
- ....
+```
+g++ main.cpp aset.cpp peminjaman.cpp -o sistem_SPPALM
+
+./sistem_SPPALM.exe
+```
