@@ -5,15 +5,16 @@
 #include <sstream>
 #include <ctime>
 #include "variabel.h"
-#include <chrono>
+#include <ctime>
 #include <string>
 
 using namespace std;
+vector<DataPeminjaman> pinjam;
 
-int cariPeminjamanByID(string idPinjam) {
+int cariPeminjamanByID(const string idPinjam) {
     int left = 0;
     int right = pinjam.size() - 1;
-    while (left <= right) {}
+    while (left <= right) 
     {
         int mid = left + (right - left) / 2;
         const std::string& midId = pinjam[mid].idPinjam;
@@ -31,22 +32,24 @@ int cariPeminjamanByID(string idPinjam) {
 }
 
 string hitungTglKembali(const std::string& tglPinjam, int durasi) {
-    // using namespace std::chrono;
+    std::tm tm = {};
+    tm.tm_year = std::stoi(tglPinjam.substr(0, 4)) - 1900;
+    tm.tm_mon  = std::stoi(tglPinjam.substr(5, 2)) - 1;
+    tm.tm_mday = std::stoi(tglPinjam.substr(8, 2));
 
-    int year = std::stoi(tglPinjam.substr(0, 4));
-    int month = std::stoi(tglPinjam.substr(5, 2));
-    int day = std::stoi(tglPinjam.substr(8, 2));
+    // Convert tm → time_t
+    std::time_t tt = std::mktime(&tm);
 
-    year_month_day start = year / month / day;
+    // Tambahkan hari
+    tt += durasi * 24 * 3600;
 
-    sys_days tp = sys_days(start) + days(durasi);
-
-    year_month_day out = year_month_day(tp);
+    // Convert kembali
+    std::tm* out = std::localtime(&tt);
 
     std::ostringstream os;
-    os << int(out.year()) << "-"
-       << std::setw(2) << std::setfill('0') << unsigned(out.month()) << "-"
-       << std::setw(2) << std::setfill('0') << unsigned(out.day());
+    os << (out->tm_year + 1900) << "-"
+       << std::setw(2) << std::setfill('0') << (out->tm_mon + 1) << "-"
+       << std::setw(2) << std::setfill('0') << out->tm_mday;
 
     return os.str();
 }
@@ -227,6 +230,7 @@ void cekPeminjaman() {
             cout << "Data tidak ditemukan, coba lagi" << endl;
         }
     }
+
     
     asetIdx = cariAsetByID(pinjam[peminjamanIdx].idAset);
     
