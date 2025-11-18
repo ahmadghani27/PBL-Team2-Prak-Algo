@@ -38,7 +38,7 @@ void sortAsetByNama();
 void sortAsetByStok();
 int cariAsetByID(std::string idAset);
 int cariPeminjamanByID(std::string idPinjam);
-std::string hitungTglKembali(std::string tglPinjam, int durasi);
+std::string hitungTglKembali(const std::string& tglPinjam, int durasi);
 void tambahStokAset(int idx, int jumlah);
 void kurangStokAset(int idx, int jumlah);
 void hapusPeminjaman(int idx);
