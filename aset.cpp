@@ -1,4 +1,4 @@
-#include "variabel.h" // megnambil variabel dari variabel.h
+#include "variabel.h" // megnambil variabel dari
 #include <iostream>
 #include <algorithm>
 #include <iomanip>
