@@ -4,9 +4,8 @@
 #include <iomanip>
 #include <sstream>
 #include <ctime>
-#include "variabel.h"
-#include <ctime>
 #include <string>
+#include "variabel.h"
 
 using namespace std;
 vector<DataPeminjaman> pinjam;
@@ -17,7 +16,7 @@ int cariPeminjamanByID(const string idPinjam) {
     while (left <= right) 
     {
         int mid = left + (right - left) / 2;
-        const std::string& midId = pinjam[mid].idPinjam;
+        const string& midId = pinjam[mid].idPinjam;
         if(midId == idPinjam) {
             return mid;
         }
@@ -31,25 +30,25 @@ int cariPeminjamanByID(const string idPinjam) {
     return -1; // Tidak ditemukan
 }
 
-string hitungTglKembali(const std::string& tglPinjam, int durasi) {
-    std::tm tm = {};
-    tm.tm_year = std::stoi(tglPinjam.substr(0, 4)) - 1900;
-    tm.tm_mon  = std::stoi(tglPinjam.substr(5, 2)) - 1;
-    tm.tm_mday = std::stoi(tglPinjam.substr(8, 2));
+string hitungTglKembali(const string& tglPinjam, int durasi) {
+    tm mytm = {};
+    mytm.tm_year = stoi(tglPinjam.substr(0, 4)) - 1900;
+    mytm.tm_mon  = stoi(tglPinjam.substr(5, 2)) - 1;
+    mytm.tm_mday = stoi(tglPinjam.substr(8, 2));
 
     // Convert tm → time_t
-    std::time_t tt = std::mktime(&tm);
+    time_t tt = mktime(&mytm);
 
     // Tambahkan hari
     tt += durasi * 24 * 3600;
 
     // Convert kembali
-    std::tm* out = std::localtime(&tt);
+    tm* out = localtime(&tt);
 
-    std::ostringstream os;
+    ostringstream os;
     os << (out->tm_year + 1900) << "-"
-       << std::setw(2) << std::setfill('0') << (out->tm_mon + 1) << "-"
-       << std::setw(2) << std::setfill('0') << out->tm_mday;
+       << setw(2) << setfill('0') << (out->tm_mon + 1) << "-"
+       << setw(2) << setfill('0') << out->tm_mday;
 
     return os.str();
 }

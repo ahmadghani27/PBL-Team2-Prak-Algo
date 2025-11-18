@@ -4,28 +4,30 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 struct DataAset {
-    std::string idAset;
-    std::string namaAset;
-    std::string kategori;
+    string idAset;
+    string namaAset;
+    string kategori;
     int stok;
     int stokAwal; // Untuk menyimpan stok awal
 };
 
 struct DataPeminjaman {
-    std::string idPinjam;
-    std::string nim;
-    std::string nama;
-    std::string idAset;
+    string idPinjam;
+    string nim;
+    string nama;
+    string idAset;
     int jumlah;
     int durasi;
-    std::string tglPinjam;
-    std::string tglKembali;
+    string tglPinjam;
+    string tglKembali;
 };
 
 // Deklarasi variabel global
-extern std::vector<DataAset> aset;
-extern std::vector<DataPeminjaman> pinjam;
+extern vector<DataAset> aset;
+extern vector<DataPeminjaman> pinjam;
 
 // Deklarasi fungsi & prosedur
 void TampilkanMenu();
@@ -36,14 +38,14 @@ void cekPeminjaman();
 void cekSisaStokAset();
 void sortAsetByNama();
 void sortAsetByStok();
-int cariAsetByID(std::string idAset);
-int cariPeminjamanByID(std::string idPinjam);
-std::string hitungTglKembali(const std::string& tglPinjam, int durasi);
+int cariAsetByID(string idAset);
+int cariPeminjamanByID(string idPinjam);
+string hitungTglKembali(const string& tglPinjam, int durasi);
 void tambahStokAset(int idx, int jumlah);
 void kurangStokAset(int idx, int jumlah);
 void hapusPeminjaman(int idx);
-bool validasiNIM(std::string nim);
-std::string tanggalHariIni();
-std::string generateIDPinjam();
+bool validasiNIM(string nim);
+string tanggalHariIni();
+string generateIDPinjam();
 
 #endif
