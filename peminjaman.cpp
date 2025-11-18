@@ -172,13 +172,17 @@ void pinjamAset()
     }
     
     while (true) {
-        cout << "Masukkan jumlah (ketik 'BATAL' untuk kembali): ";
-        cin >> jumlah;
+        string tempJumlah;
+        cout << "Masukkan jumlah : ";
+        cin >> tempJumlah;
 
-        if(nim == "BATAL") return;
+        if(tempJumlah == "BATAL") return;
         
-        if (jumlah == -1) {
-            return;
+        try {
+            jumlah = stoi(tempJumlah);
+        } catch (...) {
+            cout << "Input harus berupa angka!" << endl;
+            continue;
         }
 
         if (jumlah <= 0 || jumlah > aset[asetIdx].stok)
@@ -191,9 +195,28 @@ void pinjamAset()
         }
     }
 
-    cout << "Masukkan durasi (hari): ";
-    cin >> durasi;
+    while(true) {
+        string tempDurasi;
+        cout << "Masukkan durasi (hari): ";
+        cin >> tempDurasi;
 
+        if (tempDurasi == "BATAL") return;
+
+        try {
+            durasi = stoi(tempDurasi);
+            
+            if (durasi > 0) {
+                break;
+            } else {
+                cout << "Durasi harus lebih dari 0 hari!" << endl;
+            }
+        }
+        catch(...) {
+            cout << "Input harus berupa angka!" << endl;
+        } 
+    }
+    
+    
     string tglPinjam = tanggalHariIni();
     string tglKembali = hitungTglKembali(tglPinjam, durasi);
     idPinjam = generateIDPinjam();
@@ -220,9 +243,10 @@ void kembaliAset()
     string idPinjam, kondisi;
     int peminjamanIdx, asetIdx, jumlah;
 
+    cout << "ketik 'BATAL' untuk kembali" << endl;
     while (true)
     {
-        cout << "Masukkan ID pinjam (ketik 'BATAL' untuk kembali): ";
+        cout << "Masukkan ID pinjam : ";
         cin >> idPinjam;
 
         if (idPinjam == "BATAL")
