@@ -32,11 +32,13 @@ Stok tersisa: 13 unit
 
 # PENGEMBALIAN
 - input
-```ID_Peminjaman: PJM001
+```
+ID_Peminjaman: PJM001
 Kondisi_Aset: baik
 ```
 - output
-```PENGEMBALIAN BERHASIL!
+```
+PENGEMBALIAN BERHASIL!
 Aset: Arduino Uno (A001) x2
 Kondisi: Baik
 Stok updated: 15 unit
@@ -66,7 +68,8 @@ x Cari data peminjaman tidak ditemukan
 - input
 ```ID_Aset: A001```
 - output
-```STOK ASET:
+```
+STOK ASET:
 Arduino Uno (A001): 13 unit tersedia
 Total: 15 unit | Dipinjam: 2 unit
 ```
