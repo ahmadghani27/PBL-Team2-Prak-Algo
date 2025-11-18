@@ -235,7 +235,12 @@ void pinjamAset()
 
     pinjam.push_back(dataBaru);
 
-    cout << "Peminjaman berhasil dicatat. ID Peminjaman: " << idPinjam << endl;
+    cout << "\nPEMINJAMAN BERHASIL!." << endl;
+    cout << "ID Peminjaman: " << idPinjam << endl;
+    cout << "Peminjam: " << nama << " (" << nim << ")" << endl;
+    cout << "Aset: " << aset[asetIdx].namaAset << " (" << idAset << ") " << "x" << jumlah << endl;
+    cout << "Durasi: " << durasi << " Hari" <<endl;
+    cout << "Stok tersisa: "  << aset[asetIdx].stok << " unit" << endl;
 }
 
 void kembaliAset()
@@ -278,7 +283,10 @@ void kembaliAset()
             asetIdx = cariAsetByID(idAset);
 
             tambahStokAset(asetIdx, jumlah);
-            cout << "Pengembalian berhasil dicatat." << endl;
+            cout << "\nPENGEMBALIAN BERHASIL!" << endl;
+            cout << "Aset: " << aset[asetIdx].namaAset << " (" << pinjam[peminjamanIdx].idAset << ") " << "x" << pinjam[peminjamanIdx].jumlah << endl;
+            cout << "Kondisi: " << kondisi << endl;
+            cout << "Stok updated: " << aset[asetIdx].stok << " unit" << endl;
 
             hapusPeminjaman(peminjamanIdx);
             return;
@@ -319,24 +327,23 @@ void cekPeminjaman()
         }
     }
 
+
     asetIdx = cariAsetByID(pinjam[peminjamanIdx].idAset);
 
-    cout << "\n=== STATUS PEMINJAMAN ===" << endl;
-    cout << "ID: " << pinjam[peminjamanIdx].idPinjam << endl;
-    cout << "NIM: " << pinjam[peminjamanIdx].nim << endl;
-    cout << "Nama: " << pinjam[peminjamanIdx].nama << endl;
-    cout << "Aset: " << pinjam[peminjamanIdx].idAset << endl;
-    cout << "Nama Barang: " << aset[asetIdx].namaAset << endl;
-    cout << "Jumlah: " << pinjam[peminjamanIdx].jumlah << endl;
-    cout << "Durasi: " << pinjam[peminjamanIdx].durasi << " hari" << endl;
-    cout << "Tanggal Pinjam: " << pinjam[peminjamanIdx].tglPinjam << endl;
-    cout << "Tanggal Kembali: " << pinjam[peminjamanIdx].tglKembali << endl;
+    cout << "\nSTATUS PEMINJAMAN:" << endl;
+    cout << "ID: " << pinjam[peminjamanIdx].idPinjam << " | " << "Status: " << "Active" << endl;
+    cout << "Peminjam: " << pinjam[peminjamanIdx].nama << " (" << pinjam[peminjamanIdx].nim << ")" << endl;
+    cout << "Aset: " << aset[asetIdx].namaAset << " (" << pinjam[peminjamanIdx].idAset << ") " << "x" << pinjam[peminjamanIdx].jumlah << endl;
+    cout << "Durasi: " << pinjam[peminjamanIdx].durasi << " Hari" <<endl;
+    cout << "Tgl Pinjam: "  << pinjam[peminjamanIdx].tglPinjam << endl;
+    cout << "Batas Kembali: " << pinjam[peminjamanIdx].tglKembali << endl;
 }
 
 void cekSisaStokAset()
 {
     string idAset;
     int asetIdx;
+    
 
     while (true)
     {
@@ -368,12 +375,9 @@ void cekSisaStokAset()
 
     int totalStok = aset[asetIdx].stok + stokDipinjam;
 
-    cout << "\n===== MONITORING STOK =====" << endl;
-    cout << "ID Aset       : " << aset[asetIdx].idAset << endl;
-    cout << "Nama Aset     : " << aset[asetIdx].namaAset << endl;
-    cout << "Total Aset    : " << totalStok << endl;
-    cout << "Tersedia      : " << aset[asetIdx].stok << endl;
-    cout << "Dipinjam      : " << stokDipinjam << endl;
+    cout << "\nSTOK ASET:" << endl;
+    cout << aset[asetIdx].namaAset << " (" << aset[asetIdx].idAset << "): " << aset[asetIdx].stok << "unit tersedia" << endl;
+    cout << "Total: " << aset[asetIdx].stokAwal << " unit | Dipinjam: " << aset[asetIdx].stokAwal - aset[asetIdx].stok << " unit" << endl;
 
     if (aset[asetIdx].stok == 0)
     {
