@@ -5,7 +5,7 @@ void TampilkanMenu() {
     int menu;
     
     while (true) {
-        std::cout << "\n===== SISTEM PEMINJAMAN ASET LABORATORIUM =====\n";
+        std::cout << "\n~~~~ SISTEM PEMINJAMAN ASET LABORATORIUM ~~~~\n";
         std::cout << "1. Lihat Data Aset\n";
         std::cout << "2. Peminjaman Aset\n";
         std::cout << "3. Pengembalian Aset\n";
@@ -34,6 +34,7 @@ void TampilkanMenu() {
     }
 }
 
+// memanggil TampilkanMenu() ketika program baru saja dijalankan
 int main() {
     TampilkanMenu();
     return 0;
