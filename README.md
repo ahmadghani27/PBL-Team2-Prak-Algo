@@ -44,19 +44,6 @@ Modul-modul utama dirancang dengan fokus pada **efisiensi pemrosesan data**, di 
 
 ---
 
-## 🧪 Rencana Pengujian Awal
-
-| **Jenis Uji** | **Deskripsi** | **Hasil yang Diharapkan** |
-|----------------|----------------|-----------------------------|
-| **Normal (Sort)** | Urutkan aset dengan Insertion Sort berdasarkan nama. | Data aset diurutkan secara Alfabetis (A–Z). |
-| **Edge (Sort)** | Urutkan daftar aset kosong. | Tidak terjadi error, menampilkan pesan *"Data aset kosong"*. |
-| **Normal (Search)** | Cari ID aset valid menggunakan Binary Search. | Mengembalikan data aset lengkap. |
-| **Edge (Search)** | Cari ID aset tidak valid (Y100). | Pesan *"Aset tidak ditemukan"*. |
-| **Edge (Transaksi)** | Peminjaman melebihi stok tersedia (A001, 16 unit). | ❌ *GAGAL:* Pesan *"Jumlah melebihi stok"*. |
-| **Edge (Transaksi)** | Pengembalian dengan ID Peminjaman tidak valid (PJM999). | ❌ *GAGAL:* Pesan *"ID Peminjaman tidak ditemukan"*. |
-
----
-
 ## 🚀 Cara Menjalankan
 
 ### 1️⃣ Clone Repositori
