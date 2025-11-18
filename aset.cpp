@@ -8,14 +8,19 @@ std::vector<DataAset> aset = {
     {"A001", "Arduino Uno", "Mikrokontroler", 15},
     {"A002", "Sensor Suhu", "Sensor", 8},
     {"A003", "ESP32", "Mikrokontroler", 10},
-    {"A004", "LCD 16x2", "Display", 5}};
-
+    {"A004", "LCD 16x2", "Display", 5},
+    {"A005", "Breadboard", "Aksesoris", 20, 20},
+    {"A006", "Servo SG90", "Aktuator", 12, 12},
+    {"A007", "Kabel Jumper", "Aksesoris", 50, 50},
+    {"A008", "Multimeter", "Alat Ukur", 3, 3}};
 
 bool sortedByID = true;
 void lihatAset()
 {
-    if (aset.size() > 0)
+    // IF aset.length > 0 THEN
+    if (!aset.empty())
     {
+        // FOR i = 1 UNTIL aset.length PRINT...
         std::cout << "\n===== DAFTAR ASET LABORATORIUM =====\n";
         std::cout << std::left << std::setw(8) << "ID"
                   << std::setw(20) << "Nama Aset"
@@ -59,7 +64,7 @@ void lihatAset()
             {
                 std::cout << "Pilihan tidak valid! Silakan coba lagi.\n";
             }
-        } while (true);
+        } while (submenu < 1 || submenu > 3);
     }
     else
     {
@@ -109,7 +114,7 @@ void sortAsetByStok()
 
 int cariAsetByID(std::string idAset)
 {
-    if (!sortedByID) //sort by id terlebih dahulu untuk binary sort
+    if (!sortedByID) // sort by id terlebih dahulu untuk binary sort
     {
         for (size_t i = 1; i < aset.size(); i++)
         {
@@ -123,6 +128,7 @@ int cariAsetByID(std::string idAset)
             }
             aset[j + 1] = key;
         }
+        sortedByID = true;
     }
 
     int left = 0;
