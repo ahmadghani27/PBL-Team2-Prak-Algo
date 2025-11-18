@@ -71,8 +71,8 @@ Arduino Uno (A001): 13 unit tersedia
 Total: 15 unit | Dipinjam: 2 unit
 ```
 - Normal
-> Cari ID aset valid menggunakan Binary Search
+> Cari ID aset valid menggunakan Binary Search <br>
 > ```Mengembalikan data aset lengkap```
 - Edge
-> Cari ID aset tidak valid dengan Binary Search
+> Cari ID aset tidak valid dengan Binary Search <br>
 > ```Pesan “Aset tidak ditemukan”```
