@@ -43,8 +43,10 @@ string hitungTglKembali(const string &tglPinjam, int durasi)
 
     // Convert tm → time_t
     time_t tt = mktime(&mytm);
+
     // Tambahkan hari
     tt += durasi * 24 * 3600;
+    
     // Convert kembali
     tm *out = localtime(&tt);
 
