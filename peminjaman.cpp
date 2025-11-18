@@ -6,6 +6,7 @@
 #include <ctime>
 #include <string>
 #include "variabel.h"
+#include <regex>
 
 using namespace std;
 vector<DataPeminjaman> pinjam;
@@ -152,18 +153,31 @@ void pinjamAset()
             cout << "NIM tidak valid" << endl;
         }
     }
+    
+    while (true) {
+        cout << "Masukkan nama: ";
+        cin.ignore();
+        getline(cin, nama);
 
-    cout << "Masukkan nama: ";
-    cin.ignore();
-    getline(cin, nama);
+        regex pattern("[0-9]");
 
-    while (true)
-    {
-        cout << "Masukkan jumlah : ";
+        if(nim == "BATAL") return;
+
+        if(!regex_search(nama, pattern)) {
+            break;
+        } else {
+            cout << "Nama tidak boleh mengandung bilangan" << endl;
+        }
+         
+    }
+    
+    while (true) {
+        cout << "Masukkan jumlah (ketik 'BATAL' untuk kembali): ";
         cin >> jumlah;
 
-        if (jumlah == -1)
-        {
+        if(nim == "BATAL") return;
+        
+        if (jumlah == -1) {
             return;
         }
 
